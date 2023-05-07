@@ -1,10 +1,10 @@
-import Card from 'components/Card/Card';
+// import Card from 'components/Card/Card';
 import CardList from 'components/CardList/CardList';
 import { useState, useEffect } from 'react';
-import { createContext, useContext } from 'react';
 
-import * as API from '../services/api';
-import { PER_PAGE } from 'services/constants';
+import * as API from 'services/api';
+// import { PER_PAGE } from 'services/constants';
+// import { readData } from 'services/api';
 
 function App() {
   const [word, setWord] = useState(''); // resesarch word
@@ -27,13 +27,14 @@ function App() {
   const requestToApi = async (word, currentTweets) => {
     setIsLoading(true);
     try {
-      const { reqTweets, isMoreApi } = await API.readData(
-        word,
-        Math.floor(currentTweets.length / PER_PAGE) + 1
-      );
+      // const { reqTweets, isMoreApi } = await API.readData(
+      //   word,
+      //   Math.floor(currentTweets.length / PER_PAGE) + 1
+      // );
+      const reqTweets = await API.readData('', 1);
 
       setTweets([...currentTweets, ...reqTweets]);
-      setIsMore(isMoreApi);
+      // setIsMore(isMoreApi);
       setWord(word);
     } catch (error) {
       console.error(error);
@@ -44,6 +45,10 @@ function App() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    requestToApi('', []);
+  }, []);
 
   // // submit new word
   // const handlerSubmit = word => {
