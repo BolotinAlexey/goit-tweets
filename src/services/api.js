@@ -1,5 +1,6 @@
 import axios from 'axios';
+import { PER_PAGE, BASE_URL } from 'services/constants';
 
-axios.defaults.baseURL = 'https://645760220c15cb14820711b7.mockapi.io';
+axios.defaults.baseURL = BASE_URL;
 
-export async function readData(page) {}
+export async function readData(query, page) {}
