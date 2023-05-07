@@ -3,12 +3,11 @@ import CardList from 'components/CardList/CardList';
 import { useState, useEffect } from 'react';
 
 import * as API from 'services/api';
+import { PER_PAGE } from 'services/constants';
 // import { PER_PAGE } from 'services/constants';
 // import { readData } from 'services/api';
 
 function App() {
-  const [word, setWord] = useState(''); // resesarch word
-
   const [tweets, setTweets] = useState([]); // array of tweets
 
   const [isLoading, setIsLoading] = useState(false); //flag shower of spiner
@@ -24,23 +23,23 @@ function App() {
   // }, [gallery]);
 
   // helper function for working with request api
-  const requestToApi = async (word, currentTweets) => {
+  const requestToApi = async (currentTweets = []) => {
     setIsLoading(true);
     try {
       // const { reqTweets, isMoreApi } = await API.readData(
       //   word,
       //   Math.floor(currentTweets.length / PER_PAGE) + 1
       // );
-      const reqTweets = await API.readData('', 1);
+      const reqTweets = await API.readData(1);
+      if (reqTweets.length === PER_PAGE) setIsMore(true);
+      console.log(reqTweets);
 
       setTweets([...currentTweets, ...reqTweets]);
       // setIsMore(isMoreApi);
-      setWord(word);
     } catch (error) {
       console.error(error);
       setTweets([]);
       setIsMore(false);
-      setWord('');
     } finally {
       setIsLoading(false);
     }
@@ -67,7 +66,12 @@ function App() {
   // // close modal window
   // const closeModal = () => setModalImg(null);
 
-  return <CardList tweets={tweets} />;
+  return (
+    <>
+      <CardList tweets={tweets} />
+      {isMore && <button>is more</button>}
+    </>
+  );
 }
 
 export default App;

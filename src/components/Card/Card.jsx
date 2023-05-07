@@ -1,7 +1,7 @@
 import { CardWrap } from './Card.styled';
 
 export default function Card({ cardData, onClickFollow }) {
-  const { numberTweets, numberFollowers } = cardData;
+  const { tweets, followers } = cardData;
 
   return (
     <CardWrap>
@@ -24,8 +24,8 @@ export default function Card({ cardData, onClickFollow }) {
           <img src={require('assets/strip.png')} />
         </div>
       </div>
-      <p className="tweets">{numberTweets} TWEETS</p>
-      <p className="followers">{numberFollowers} FOLLOWERS</p>
+      <p className="tweets">{tweets} TWEETS</p>
+      <p className="followers">{followers} FOLLOWERS</p>
       <button onClick={onClickFollow}>Follow</button>
     </CardWrap>
   );

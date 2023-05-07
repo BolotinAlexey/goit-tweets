@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const CardWrap = styled.div`
+export const CardWrap = styled.li`
   position: relative;
   width: 380px;
   height: 460px;
