@@ -32,7 +32,6 @@ function App() {
       // );
       const reqTweets = await API.readData();
       if (reqTweets.length === PER_PAGE) setIsMore(true);
-      console.log(reqTweets);
 
       setTweets([...currentTweets, ...reqTweets]);
       // setIsMore(isMoreApi);
@@ -65,12 +64,13 @@ function App() {
 
   // // close modal window
   // const closeModal = () => setModalImg(null);
+  const onClickFollow = id => console.log(id);
 
   return (
     <>
       {isLoading && <p>Loading..</p>}
-      <CardList tweets={tweets} />
-      {isMore && <button>is more</button>}
+      <CardList onClickFollow={onClickFollow} tweets={tweets} />
+      {isMore && <button>Load More</button>}
     </>
   );
 }

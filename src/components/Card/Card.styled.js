@@ -45,6 +45,7 @@ export const CardWrap = styled.li`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    border-radius: 50%;
   }
   .left,
   .right {
