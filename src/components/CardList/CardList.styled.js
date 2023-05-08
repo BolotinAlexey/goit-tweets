@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 export const Ul = styled.ul`
-  display: grid;
   max-width: calc(100vw - 48px);
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-gap: 16px;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
   list-style: none;
-  margin-left: auto;
-  margin-right: auto;
 `;

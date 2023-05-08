@@ -1,6 +1,7 @@
 import Button from 'components/Button/Button';
 import addComma from 'utils/addComma';
 import { CardWrap } from './Card.styled';
+import DataUser from 'components/DataUser/DataUser';
 
 export default function Card({ cardData, onClickFollow }) {
   const { tweets, followers, avatar, id, isFollow } = cardData;
@@ -33,9 +34,8 @@ export default function Card({ cardData, onClickFollow }) {
           <img src={require('assets/strip.png')} alt="" />
         </div>
       </div>
-      <p className="tweets">{addComma(tweets)} TWEETS</p>
-      <p className="followers">{addComma(followers)} FOLLOWERS</p>
-      <Button onClickFollow={handlerClick} isFollow>
+      <DataUser tweets={tweets} followers={followers} />
+      <Button onClickFollow={handlerClick} isFollow={isFollow}>
         Follow
       </Button>
     </CardWrap>

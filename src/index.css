@@ -1,3 +1,8 @@
+:root {
+  --bgColor: #5736a3;
+  --color: #ebd8ff;
+}
+
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -12,9 +17,9 @@ html {
 
 body {
   margin: 0;
-  font-family: Montserrat, Roboto, sans-serif;
-  color: #212121;
+  color: var(--color);
   background-color: #fff;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -23,4 +28,19 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+p {
+  margin: 0;
+}
+
+.load-more {
+  width: 196px;
+  padding: 14px 0;
+  margin: 20px auto;
+  display: block;
+  border-radius: 10px;
+  cursor: pointer;
+  font: 600 18px/1.2 Montserrat, Roboto, sans-serif;
+  background-color: var(--bgColor);
+  color: var(--color);
 }

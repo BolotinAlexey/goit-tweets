@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 import * as API from 'services/api';
 import { PER_PAGE } from 'services/constants';
+import addPropertyInArray from 'utils/addPropertyInArray';
 // import { PER_PAGE } from 'services/constants';
 // import { readData } from 'services/api';
 
@@ -33,7 +34,10 @@ function App() {
       const reqTweets = await API.readData();
       if (reqTweets.length === PER_PAGE) setIsMore(true);
 
-      setTweets([...currentTweets, ...reqTweets]);
+      setTweets([
+        ...currentTweets,
+        ...addPropertyInArray('isFollow', reqTweets, false),
+      ]);
       // setIsMore(isMoreApi);
     } catch (error) {
       console.error(error);
@@ -64,13 +68,17 @@ function App() {
 
   // // close modal window
   // const closeModal = () => setModalImg(null);
-  const onClickFollow = id => console.log(id);
+  const onClickFollow = id => {
+    setTweets(
+      tweets.map(el => (id === el.id ? { ...el, isFollow: !el.isFollow } : el))
+    );
+  };
 
   return (
     <>
       {isLoading && <p>Loading..</p>}
       <CardList onClickFollow={onClickFollow} tweets={tweets} />
-      {isMore && <button>Load More</button>}
+      {isMore && <button className="load-more">Load More</button>}
     </>
   );
 }

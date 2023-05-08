@@ -51,9 +51,9 @@ export const CardWrap = styled.li`
   .right {
   }
   .left {
-    margin-right: -5px;
+    /* margin-right: -5px; */
   }
   .right {
-    margin-left: -5px;
+    /* margin-left: -5px; */
   }
 `;
