@@ -1,5 +1,4 @@
 import Button from 'components/Button/Button';
-import addComma from 'utils/addComma';
 import { CardWrap } from './Card.styled';
 import DataUser from 'components/DataUser/DataUser';
 

@@ -1,15 +1,12 @@
-// import Card from 'components/Card/Card';
 import CardList from 'components/CardList/CardList';
 import { useState, useEffect } from 'react';
 
 import * as API from 'services/api';
 import { PER_PAGE } from 'services/constants';
 import addPropertyInArray from 'utils/addPropertyInArray';
-// import { PER_PAGE } from 'services/constants';
-// import { readData } from 'services/api';
 
 function App() {
-  const [tweets, setTweets] = useState([]); // array of tweets
+  const [tweets, setTweets] = useState([]);
 
   const [isLoading, setIsLoading] = useState(false); //flag shower of spiner
 
@@ -31,8 +28,10 @@ function App() {
       //   word,
       //   Math.floor(currentTweets.length / PER_PAGE) + 1
       // );
-      const reqTweets = await API.readData();
-      if (reqTweets.length === PER_PAGE) setIsMore(true);
+      const reqTweets = await API.readData(
+        Math.floor(currentTweets.length / PER_PAGE) + 1
+      );
+      setIsMore(reqTweets.length === PER_PAGE ? true : false);
 
       setTweets([
         ...currentTweets,
@@ -74,11 +73,19 @@ function App() {
     );
   };
 
+  const onMore = () => {
+    requestToApi(tweets);
+  };
+
   return (
     <>
       {isLoading && <p>Loading..</p>}
       <CardList onClickFollow={onClickFollow} tweets={tweets} />
-      {isMore && <button className="load-more">Load More</button>}
+      {isMore && (
+        <button onClick={onMore} className="load-more">
+          Load More
+        </button>
+      )}
     </>
   );
 }
