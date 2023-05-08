@@ -1,3 +1,4 @@
+import addComma from 'utils/addComma';
 import { CardWrap } from './Card.styled';
 
 export default function Card({ cardData, onClickFollow }) {
@@ -13,19 +14,23 @@ export default function Card({ cardData, onClickFollow }) {
       />
       <div className="avatar-block">
         <div className="left">
-          <img src={require('assets/strip.png')} />
+          <img src={require('assets/strip.png')} alt="" />
         </div>
         <div className="center">
-          <img src={require('assets/boy.png')} className="avatar" />
-          <img className="ring" src={require('assets/ring.png')}></img>
+          <img
+            src={require('assets/boy.png')}
+            className="avatar"
+            alt="avatar"
+          />
+          <img className="ring" src={require('assets/ring.png')} alt=""></img>
         </div>
 
         <div className="right">
-          <img src={require('assets/strip.png')} />
+          <img src={require('assets/strip.png')} alt="" />
         </div>
       </div>
-      <p className="tweets">{tweets} TWEETS</p>
-      <p className="followers">{followers} FOLLOWERS</p>
+      <p className="tweets">{addComma(tweets)} TWEETS</p>
+      <p className="followers">{addComma(followers)} FOLLOWERS</p>
       <button onClick={onClickFollow}>Follow</button>
     </CardWrap>
   );

@@ -30,7 +30,7 @@ function App() {
       //   word,
       //   Math.floor(currentTweets.length / PER_PAGE) + 1
       // );
-      const reqTweets = await API.readData(1);
+      const reqTweets = await API.readData();
       if (reqTweets.length === PER_PAGE) setIsMore(true);
       console.log(reqTweets);
 
@@ -46,7 +46,7 @@ function App() {
   };
 
   useEffect(() => {
-    requestToApi('', []);
+    requestToApi();
   }, []);
 
   // // submit new word
@@ -68,6 +68,7 @@ function App() {
 
   return (
     <>
+      {isLoading && <p>Loading..</p>}
       <CardList tweets={tweets} />
       {isMore && <button>is more</button>}
     </>
