@@ -6,6 +6,7 @@ import { readData } from 'services/api';
 import { PER_PAGE } from 'services/constants';
 import addPropertyInArray from 'utils/addPropertyInArray';
 import handlerFollowers from 'utils/handlerFollowers';
+import filterTweets from 'utils/filterTweets';
 
 export default function Tweets() {
   const [tweets, setTweets] = useState(() => {
@@ -19,6 +20,8 @@ export default function Tweets() {
     const isMoreLS = JSON.parse(localStorage.getItem('isMore'));
     return isMoreLS ? isMoreLS : false;
   });
+
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     if (tweets.length === 0) window.scrollTo({ top: 0 });
@@ -91,7 +94,10 @@ export default function Tweets() {
   return (
     <>
       {isLoading && <p>Loading..</p>}
-      <CardList onClickFollow={onClickFollow} tweets={tweets} />
+      <CardList
+        onClickFollow={onClickFollow}
+        tweets={filterTweets(tweets, filter)}
+      />
       {isMore && (
         <button onClick={onMore} className="load-more">
           Load More
