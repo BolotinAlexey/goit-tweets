@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import CardList from 'components/CardList/CardList';
 import { readData } from 'services/api';
@@ -96,6 +97,9 @@ export default function Tweets() {
           Load More
         </button>
       )}
+      <NavLink to="/">
+        <button className="load-more">Back</button>
+      </NavLink>
     </>
   );
 }
