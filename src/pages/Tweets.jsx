@@ -10,6 +10,7 @@ import { dropDownOption } from 'services/dropDownOption';
 import addPropertyInArray from 'utils/addPropertyInArray';
 import handlerFollowers from 'utils/handlerFollowers';
 import filterTweets from 'utils/filterTweets';
+import scrollWindow from 'utils/scrollWindows';
 
 export default function Tweets() {
   const [tweets, setTweets] = useState(() => {
@@ -27,12 +28,7 @@ export default function Tweets() {
   const [filter, setFilter] = useState('all');
 
   useEffect(() => {
-    if (tweets.length === 0) window.scrollTo({ top: 0 });
-
-    window.scrollTo({
-      top: document.querySelector('body').scrollHeight,
-      behavior: 'smooth',
-    });
+    scrollWindow(tweets.length === 0);
   }, [tweets.length]);
 
   useEffect(() => {
@@ -67,7 +63,6 @@ export default function Tweets() {
   useEffect(() => {
     const tweetsLS = JSON.parse(localStorage.getItem('tweets'));
     if (!tweetsLS.length) requestToApi();
-    // else setIsMore(isMoreLS);
   }, []);
 
   const onClickFollow = id => {
