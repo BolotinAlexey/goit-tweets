@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import bg from '../../assets/miniature.png';
+import bg from 'assets/miniature.png';
 
 export const CardWrap = styled.li`
   position: relative;
