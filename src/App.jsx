@@ -9,26 +9,21 @@ import handlerFollowers from 'utils/handlerFollowers';
 function App() {
   const [tweets, setTweets] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(false); //flag shower of spiner
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isMore, setIsMore] = useState(false); //flag shower button of 'read-more'
-  // useEffect(() => {
-  //   if (gallery.length === 0) window.scrollTo({ top: 0 });
+  const [isMore, setIsMore] = useState(false);
+  useEffect(() => {
+    if (tweets.length === 0) window.scrollTo({ top: 0 });
 
-  //   window.scrollTo({
-  //     top: document.querySelector('body').scrollHeight,
-  //     behavior: 'smooth',
-  //   });
-  // }, [gallery]);
+    window.scrollTo({
+      top: document.querySelector('body').scrollHeight,
+      behavior: 'smooth',
+    });
+  }, [tweets]);
 
-  // helper function for working with request api
   const requestToApi = async (currentTweets = []) => {
     setIsLoading(true);
     try {
-      // const { reqTweets, isMoreApi } = await API.readData(
-      //   word,
-      //   Math.floor(currentTweets.length / PER_PAGE) + 1
-      // );
       const reqTweets = await readData(
         Math.floor(currentTweets.length / PER_PAGE) + 1
       );
