@@ -1,20 +1,19 @@
 import styled from 'styled-components';
+import bg from '../../assets/miniature.png';
 
 export const CardWrap = styled.li`
   position: relative;
   width: 380px;
   height: 460px;
-  padding: 28px 0 36px;
+  padding: 0 0 36px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
-  background: linear-gradient(
-    114.99deg,
-    #471ca9 -0.99%,
-    #5736a3 54.28%,
-    #4b2a99 78.99%
-  );
+  background-image: url(${bg}),
+    linear-gradient(114.99deg, #471ca9 -0.99%, #5736a3 54.28%, #4b2a99 78.99%);
   box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+  background-repeat: no-repeat;
+  background-position: center 28px, 0 0;
   border-radius: 20px;
 
   .logo {
@@ -29,7 +28,6 @@ export const CardWrap = styled.li`
 
   .avatar-block {
     position: relative;
-    top: -22px;
     display: flex;
     align-items: center;
   }

@@ -10,22 +10,19 @@ export default function Card({ cardData, onClickFollow }) {
   return (
     <CardWrap>
       <img className="logo" src={require('assets/logo.png')} alt="goit" />
-      <img
-        className="miniature"
-        src={require('assets/miniature.png')}
-        alt="miniature"
-      />
+
+      <Button onClickFollow={handlerClick} isFollow={isFollow}>
+        Follow
+      </Button>
+
+      <DataUser tweets={tweets} followers={followers} />
+
       <div className="avatar-block">
         <div className="left">
           <img src={require('assets/strip.png')} alt="" />
         </div>
         <div className="center">
-          <img
-            // src={require('assets/boy.png')}
-            src={avatar}
-            className="avatar"
-            alt="avatar"
-          />
+          <img src={avatar} className="avatar" alt="avatar" />
           <img className="ring" src={require('assets/ring.png')} alt=""></img>
         </div>
 
@@ -33,10 +30,6 @@ export default function Card({ cardData, onClickFollow }) {
           <img src={require('assets/strip.png')} alt="" />
         </div>
       </div>
-      <DataUser tweets={tweets} followers={followers} />
-      <Button onClickFollow={handlerClick} isFollow={isFollow}>
-        Follow
-      </Button>
     </CardWrap>
   );
 }
