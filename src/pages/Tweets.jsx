@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 import CardList from 'components/CardList/CardList';
 import { readData } from 'services/api';
 import { PER_PAGE } from 'services/constants';
+import { dropDownOption } from 'services/dropDownOption';
 import addPropertyInArray from 'utils/addPropertyInArray';
 import handlerFollowers from 'utils/handlerFollowers';
 import filterTweets from 'utils/filterTweets';
@@ -67,22 +70,6 @@ export default function Tweets() {
     // else setIsMore(isMoreLS);
   }, []);
 
-  // // submit new word
-  // const handlerSubmit = word => {
-  //   setWord(word);
-  //   setGallery([]);
-  //   setisLoading(true);
-
-  //   requestToApi(word, []);
-  // };
-
-  // // press button 'read more'
-  // const handlerMore = () => {
-  //   requestToApi(word, gallery);
-  // };
-
-  // // close modal window
-  // const closeModal = () => setModalImg(null);
   const onClickFollow = id => {
     setTweets(tweets.map(el => handlerFollowers(el, id)));
   };
@@ -93,6 +80,12 @@ export default function Tweets() {
 
   return (
     <>
+      <Dropdown
+        options={dropDownOption}
+        placeholder="Select an filter"
+        className="dropDown"
+        onChange={e => setFilter(e.value)}
+      />
       {isLoading && <p>Loading..</p>}
       <CardList
         onClickFollow={onClickFollow}

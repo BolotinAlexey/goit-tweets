@@ -50,3 +50,12 @@ p {
   background-color: var(--bgColor);
   color: var(--color);
 }
+
+.dropDown {
+  width: 196px;
+  padding: 14px 0;
+  margin: 0 20px 0 auto;
+  top: -96px;
+  font: var(--font);
+  cursor: pointer;
+}
