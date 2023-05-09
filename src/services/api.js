@@ -7,3 +7,9 @@ export async function readData(page = 1) {
   const reqTweets = await axios.get(`/tweets?page=${page}&limit= ${PER_PAGE}`);
   return reqTweets.data;
 }
+
+export async function patchFollowersUser(id, followers) {
+  await axios.put(`/tweets/${id}`, {
+    followers,
+  });
+}

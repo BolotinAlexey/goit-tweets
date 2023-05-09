@@ -1,9 +1,10 @@
 import CardList from 'components/CardList/CardList';
 import { useState, useEffect } from 'react';
 
-import * as API from 'services/api';
+import { readData } from 'services/api';
 import { PER_PAGE } from 'services/constants';
 import addPropertyInArray from 'utils/addPropertyInArray';
+import handlerFollowers from 'utils/handlerFollowers';
 
 function App() {
   const [tweets, setTweets] = useState([]);
@@ -28,7 +29,7 @@ function App() {
       //   word,
       //   Math.floor(currentTweets.length / PER_PAGE) + 1
       // );
-      const reqTweets = await API.readData(
+      const reqTweets = await readData(
         Math.floor(currentTweets.length / PER_PAGE) + 1
       );
       setIsMore(reqTweets.length === PER_PAGE ? true : false);
@@ -37,7 +38,6 @@ function App() {
         ...currentTweets,
         ...addPropertyInArray('isFollow', reqTweets, false),
       ]);
-      // setIsMore(isMoreApi);
     } catch (error) {
       console.error(error);
       setTweets([]);
@@ -68,9 +68,7 @@ function App() {
   // // close modal window
   // const closeModal = () => setModalImg(null);
   const onClickFollow = id => {
-    setTweets(
-      tweets.map(el => (id === el.id ? { ...el, isFollow: !el.isFollow } : el))
-    );
+    setTweets(tweets.map(el => handlerFollowers(el, id)));
   };
 
   const onMore = () => {
