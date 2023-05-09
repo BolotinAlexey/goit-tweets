@@ -7,11 +7,18 @@ import addPropertyInArray from 'utils/addPropertyInArray';
 import handlerFollowers from 'utils/handlerFollowers';
 
 function App() {
-  const [tweets, setTweets] = useState([]);
+  const [tweets, setTweets] = useState(() => {
+    const arrayLS = JSON.parse(localStorage.getItem('tweets'));
+    return arrayLS ? arrayLS : [];
+  });
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [isMore, setIsMore] = useState(false);
+  const [isMore, setIsMore] = useState(() => {
+    const isMoreLS = JSON.parse(localStorage.getItem('isMore'));
+    return isMoreLS ? isMoreLS : false;
+  });
+
   useEffect(() => {
     if (tweets.length === 0) window.scrollTo({ top: 0 });
 
@@ -19,7 +26,15 @@ function App() {
       top: document.querySelector('body').scrollHeight,
       behavior: 'smooth',
     });
+  }, [tweets.length]);
+
+  useEffect(() => {
+    localStorage.setItem('tweets', JSON.stringify(tweets));
   }, [tweets]);
+
+  useEffect(() => {
+    localStorage.setItem('isMore', JSON.stringify(isMore));
+  }, [isMore]);
 
   const requestToApi = async (currentTweets = []) => {
     setIsLoading(true);
@@ -43,7 +58,10 @@ function App() {
   };
 
   useEffect(() => {
-    requestToApi();
+    const tweetsLS = JSON.parse(localStorage.getItem('tweets'));
+    console.log(tweetsLS);
+    if (!tweetsLS.length) requestToApi();
+    // else setIsMore(isMoreLS);
   }, []);
 
   // // submit new word
