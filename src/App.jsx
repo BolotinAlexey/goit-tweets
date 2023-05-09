@@ -59,7 +59,6 @@ function App() {
 
   useEffect(() => {
     const tweetsLS = JSON.parse(localStorage.getItem('tweets'));
-    console.log(tweetsLS);
     if (!tweetsLS.length) requestToApi();
     // else setIsMore(isMoreLS);
   }, []);
