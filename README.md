@@ -12,12 +12,8 @@ number of followers. When pressed again, the opposite effect occurs.
 
 > ### Usage tools:
 >
-> - **_ React _**
->
-> - **_ React-router _**
->
-> - **_ Styled-components _**
->
-> - **_ React-dropdown _**
->
-> - **_ Axios _**
+> - **React**
+> - **React-router**
+> - **Styled-components**
+> - **React-dropdown**
+> - **Axios**
