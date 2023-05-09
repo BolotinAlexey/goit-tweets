@@ -9,7 +9,7 @@ export default function addComma(value) {
 
   let newString = '';
   while (value > 999) {
-    newString += ',' + (value % 1e3).toString();
+    newString += ',' + value.toString().substr(-3, 3);
     value = Math.floor(value / 1e3);
   }
   return value.toString().concat(newString);
