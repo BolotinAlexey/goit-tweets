@@ -17,3 +17,5 @@ number of followers. When pressed again, the opposite effect occurs.
 > - **Styled-components**
 > - **React-dropdown**
 > - **Axios**
+
+#### Link to the layout: https://www.figma.com/file/zun1oP6NmS2Lmgbcj6e1IG/Test?type=design&node-id=0-1&t=VWiKoP6ouyeb12rh-0
