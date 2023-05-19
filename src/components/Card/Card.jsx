@@ -10,7 +10,13 @@ export default function Card({ cardData, onClickFollow }) {
 
   return (
     <CardWrap>
-      <img className="logo" src={require('assets/logo.png')} alt="goit" />
+      <img
+        className="logo"
+        width={'70px'}
+        height={'22px'}
+        src={require('assets/logo.png')}
+        alt="goit"
+      />
 
       <Button onClickFollow={handlerClick} isFollow={isFollow}>
         Follow
