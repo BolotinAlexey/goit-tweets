@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/goit-tweets/static/css/main.b3264c97.css",
-    "main.js": "/goit-tweets/static/js/main.ebdbf254.js",
+    "main.js": "/goit-tweets/static/js/main.abd0c777.js",
     "static/media/miniature.png": "/goit-tweets/static/media/miniature.032662a2a907475127d7.png",
     "static/media/ring.png": "/goit-tweets/static/media/ring.f756a14a22f12aa15761.png",
     "index.html": "/goit-tweets/index.html",
     "main.b3264c97.css.map": "/goit-tweets/static/css/main.b3264c97.css.map",
-    "main.ebdbf254.js.map": "/goit-tweets/static/js/main.ebdbf254.js.map"
+    "main.abd0c777.js.map": "/goit-tweets/static/js/main.abd0c777.js.map"
   },
   "entrypoints": [
     "static/css/main.b3264c97.css",
-    "static/js/main.ebdbf254.js"
+    "static/js/main.abd0c777.js"
   ]
 }
